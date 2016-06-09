@@ -8,11 +8,13 @@ class sanitize(mt.sanitize):
 
     def prepare (self, before):
         after = before
-        after = after.replace("&", "and")
-        after = after.replace(" ", "_")
-        after = after.lower()
 
-        # print "%s -> %s" % (before, after)
+        after = re.sub(r'\s+', ' ', after)
+        after = after.replace(" ", "_")
+
+        after = after.replace("&", "and")
+
+        after = after.lower()
         return after
 
     def prepare_namespace(self, ns):
