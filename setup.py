@@ -25,7 +25,7 @@ setup(
     author='Mapzen',
     url='https://github.com/whosonfirst/py-mapzen-whosonfirst-machinetag',
     install_requires=[
-        'machinetag>1.3',	# https://github.com/whosonfirst/py-machinetag
+        'machinetag>=1.3',	# https://github.com/whosonfirst/py-machinetag
         ],
     dependency_links=[
         'https://github.com/whosonfirst/py-machinetag/tarball/master#egg=machinetag-1.3',
