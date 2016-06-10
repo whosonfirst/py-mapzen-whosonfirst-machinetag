@@ -10,7 +10,7 @@ class sanitize(mt.sanitize):
         after = before
 
         after = after.replace("&", "and")	
-        after = after.replace("/", "_")		# because enpathification (see below)
+        after = after.replace(".", "_")		# because enpathification (see below)
 
         after = re.sub(r'\s+', ' ', after)
         after = after.replace(" ", "_")
@@ -36,4 +36,4 @@ class machinetag(mt.machinetag):
     # https://stackoverflow.com/questions/24819234/elasticsearch-using-the-path-hierarchy-tokenizer-to-access-different-level-of
 
     def enpathify(self):
-        return "/".join((self.namespace(), self.predicate(), self.value()))
+        return ".".join((self.namespace(), self.predicate(), self.value()))
