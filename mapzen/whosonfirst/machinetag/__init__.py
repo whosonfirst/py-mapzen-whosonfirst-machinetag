@@ -2,6 +2,7 @@
 __import__('pkg_resources').declare_namespace(__name__)
 
 import re
+import string
 import machinetag as mt
 
 class sanitize(mt.sanitize):
@@ -11,6 +12,8 @@ class sanitize(mt.sanitize):
 
         after = after.replace("&", " and ")	
         after = after.replace("/", " or ")
+
+        after = after.translate(None, string.punctuation)
 
         after = re.sub(r'\s+', ' ', after)
         after = after.replace(" ", "_")
