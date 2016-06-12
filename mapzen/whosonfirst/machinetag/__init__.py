@@ -36,6 +36,7 @@ class machinetag(mt.machinetag):
 
     # https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pathhierarchy-tokenizer.html
     # https://stackoverflow.com/questions/24819234/elasticsearch-using-the-path-hierarchy-tokenizer-to-access-different-level-of
+    # https://github.com/whosonfirst/es-whosonfirst-schema/blob/categories/schema/mappings.spelunker.json
 
     def enpathify(self):
         sep = self.__enpathify_separator__
