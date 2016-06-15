@@ -3,17 +3,24 @@ __import__('pkg_resources').declare_namespace(__name__)
 
 import re
 import string
+import logging
+
 import machinetag as mt
 
 class sanitize(mt.sanitize):
 
     def prepare (self, before):
-        after = before
+
+        after = before.lower()
 
         after = after.replace("&", " and ")	
         after = after.replace("/", " or ")
 
-        after = after.translate(None, string.punctuation)
+        try:
+            after = after.translate(string.punctuation)
+        except Exception, e:
+            logging.warning("failed to translate '%s' because %s" % (after, e))
+            pass
 
         after = re.sub(r'\s+', ' ', after)
         after = after.replace(" ", "_")
