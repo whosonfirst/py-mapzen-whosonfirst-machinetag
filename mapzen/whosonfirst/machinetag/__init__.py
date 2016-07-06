@@ -13,9 +13,11 @@ class sanitize(mt.sanitize):
 
         after = before.lower()
 
-        after = after.replace("&", " and ")	
+        after = after.replace("&", " and ")
         after = after.replace("/", " or ")
-
+        after = after.replace(",", "")
+        after = after.replace("-", "_")        
+        
         try:
             after = after.translate(string.punctuation)
         except Exception, e:
