@@ -19,7 +19,7 @@ desc = open("README.md").read()
 
 setup(
     name='mapzen.whosonfirst.machinetag',
-    namespace_packages=['mapzen', 'mapzen.whosonfirst', 'mapzen.whosonfirst.machinetag'],
+    namespace_packages=['mapzen', 'mapzen.whosonfirst'],
     version=version,
     description='Python package for working with machine tags in Who\'s On First documents',
     author='Mapzen',
