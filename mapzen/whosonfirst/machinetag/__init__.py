@@ -2,7 +2,7 @@ import re
 import string
 import logging
 
-import machinetag as mt
+import machinetag.common as mt
 
 class sanitize(mt.sanitize):
 
