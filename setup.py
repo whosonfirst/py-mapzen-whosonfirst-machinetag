@@ -19,17 +19,11 @@ desc = open("README.md").read()
 
 setup(
     name='mapzen.whosonfirst.machinetag',
-    namespace_packages=['mapzen', 'mapzen.whosonfirst'],
+    namespace_packages=['mapzen', 'mapzen.whosonfirst', 'mapzen.whosonfirst.machinetag'],
     version=version,
     description='Python package for working with machine tags in Who\'s On First documents',
     author='Mapzen',
     url='https://github.com/whosonfirst/py-mapzen-whosonfirst-machinetag',
-    install_requires=[
-        'machinetag>=1.3',	# https://github.com/whosonfirst/py-machinetag
-        ],
-    dependency_links=[
-        'https://github.com/whosonfirst/py-machinetag/tarball/master#egg=machinetag-1.3',
-        ],
     packages=packages,
     scripts=[
         ],
