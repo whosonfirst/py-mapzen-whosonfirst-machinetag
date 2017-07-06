@@ -13,11 +13,13 @@ class sanitize(mt.sanitize):
         after = after.replace("&", " and ")	
         after = after.replace("/", " or ")
 
-        try:
-            after = after.translate(string.punctuation)
-        except Exception, e:
-            logging.warning("failed to translate '%s' because %s" % (after, e))
-            pass
+        if after != "":
+
+            try:
+                after = string.translate(after, None, string.punctuation)
+            except Exception, e:
+                logging.warning("failed to translate '%s' because %s" % (after, e))
+                pass
 
         after = re.sub(r'\s+', ' ', after)
         after = after.replace(" ", "_")
