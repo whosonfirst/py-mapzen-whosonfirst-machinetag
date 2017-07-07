@@ -8,18 +8,21 @@ class sanitize(mt.sanitize):
 
     def prepare (self, before):
 
-        after = before.lower()
+        after = before.strip()
 
+        if after == "":
+            return ""
+            
+        after = after.lower()
+            
         after = after.replace("&", " and ")	
         after = after.replace("/", " or ")
 
-        if after != "":
-
-            try:
-                after = string.translate(after, None, string.punctuation)
-            except Exception, e:
-                logging.warning("failed to translate '%s' because %s" % (after, e))
-                pass
+        try:
+            after = string.translate(after, None, string.punctuation)
+        except Exception, e:
+            logging.warning("failed to translate '%s' because %s" % (after, e))
+            pass
 
         after = re.sub(r'\s+', ' ', after)
         after = after.replace(" ", "_")
