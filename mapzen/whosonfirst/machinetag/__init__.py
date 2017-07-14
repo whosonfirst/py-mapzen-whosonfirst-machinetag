@@ -19,7 +19,16 @@ class sanitize(mt.sanitize):
         after = after.replace("/", " or ")
 
         try:
-            after = string.translate(after, None, string.punctuation)
+
+            # I hate you, Python...
+            # https://stackoverflow.com/questions/11692199/string-translate-with-unicode-data-in-python
+            # after = string.translate(after, None, string.punctuation)
+
+            after = after.encode('utf-8').translate(None, string.punctuation)
+
+            # the py-3 version... https://stackoverflow.com/questions/23175809/typeerror-translate-takes-one-argument-2-given-python
+            # after = after.translate(str.maketrans('','',string.punctuation))
+
         except Exception, e:
             logging.warning("failed to translate '%s' because %s" % (after, e))
             pass
