@@ -29,7 +29,9 @@ class sanitize(mt.sanitize):
             # the py-3 version... https://stackoverflow.com/questions/23175809/typeerror-translate-takes-one-argument-2-given-python
             # after = after.translate(str.maketrans('','',string.punctuation))
 
-        except Exception, e:
+        # Python 3 migration-ify
+        # (20200910/vicchi)
+        except Exception as e:
             logging.warning("failed to translate '%s' because %s" % (after, e))
             pass
 
@@ -45,7 +47,7 @@ class sanitize(mt.sanitize):
     def prepare_predicate(self, pred):
         return self.prepare(pred)
     
-    def prepare_value(value):
+    def prepare_value(self, value):
         return self.prepare(value)
 
 class machinetag(mt.machinetag):
